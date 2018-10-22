@@ -106,7 +106,7 @@ namespace Properties4Net
 
             foreach (String k in map.Keys)
             {
-                sb.AppendLine(string.Format("====== properties {0} ======",k));
+                sb.AppendLine(string.Format("====== {0} properties ======",k));
                 sb.Append(map[k]);
                 sb.AppendLine();
             }
