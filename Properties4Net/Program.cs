@@ -16,7 +16,14 @@ namespace Properties4Net
 
             Console.WriteLine(properties);
 
-            Console.WriteLine(properties["language"]);
+            string dir = Path.Join(root,"Data");
+
+            MessageSource ms = new MessageSource(dir,"message");
+            Console.WriteLine(ms);
+
+            Console.WriteLine(ms.GetMessage("greet", new string[] { "alking" }, ""));
+
+            Console.WriteLine(ms.GetMessage("greet", new string[]{"alking"}, "zh_CN"));
 
         }
     }
