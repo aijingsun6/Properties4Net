@@ -6,8 +6,9 @@ namespace Properties4Net
 {
     public class Properties
     {
+		private string path;
 
-        public string Path{get;}
+        public string Path{ get { return this.path; } }
 
         private Dictionary<string, string> map = new Dictionary<string, string>();
 
@@ -25,7 +26,7 @@ namespace Properties4Net
 
         public Properties(string path)
         {
-            this.Path = path;
+			this.path = path;
             LoadFile(path);
         }
 
@@ -39,7 +40,7 @@ namespace Properties4Net
             string lineAcc = "";
             foreach (String line in File.ReadAllLines(path))
             {
-                if(line.EndsWith('\\'))
+                if(line.EndsWith("\\"))
                 {
                     int idx = line.LastIndexOf('\\');
                     lineAcc = lineAcc + line.TrimStart().Substring(0, idx-1);
@@ -59,7 +60,7 @@ namespace Properties4Net
             {
                 return;
             }
-            if(line.StartsWith('#') || line.StartsWith('!'))
+            if(line.StartsWith("#") || line.StartsWith("!"))
             {
                 return;
             }

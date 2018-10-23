@@ -11,18 +11,22 @@ namespace Properties4Net
     /// </summary>
     public class MessageSource
     {
-        private Properties def;
+        private Properties def = null;
 
         private Dictionary<string, Properties> map = new Dictionary<string, Properties>();
 
-        public string Dir { get; }
+		private string dir;
 
-        public string BaseName { get; }
+		private string basename;
+
+        public string Dir { get { return this.dir; } }
+
+        public string BaseName { get { return this.basename; } }
 
         public MessageSource(string dir, string basename)
         {
-            this.Dir = dir;
-            this.BaseName = basename;
+			this.dir = dir;
+			this.basename = basename;
             LoadDir(dir,basename);
         }
 
@@ -37,7 +41,6 @@ namespace Properties4Net
             foreach(string file in files)
             {
                 string fileName = Path.GetFileName(file);
-                string ext = Path.GetExtension(file);
                 string pattern = string.Format("^{0}_?[a-z_A-Z]*.properties$",basename);
                 Match match = Regex.Match(fileName, pattern);
                 if(!match.Success)

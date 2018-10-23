@@ -10,20 +10,22 @@ namespace Properties4Net
             string root = Environment.CurrentDirectory;
             Console.WriteLine(root);
 
-            string fooPath = Path.Join(root,"Data/Foo.properties");
+            string fooPath = Path.Combine(root,"Data/Foo.properties");
 
             Properties properties = new Properties(fooPath);
 
             Console.WriteLine(properties);
 
-            string dir = Path.Join(root,"Data");
+            string dir = Path.Combine(root,"Data");
 
             MessageSource ms = new MessageSource(dir,"message");
             Console.WriteLine(ms);
 
-            Console.WriteLine(ms.GetMessage("greet", new string[] { "alking" }, ""));
+            Console.WriteLine(ms.GetMessage("greet", new string[]{"alking"}, ""));
 
             Console.WriteLine(ms.GetMessage("greet", new string[]{"alking"}, "zh_CN"));
+
+			Console.ReadLine();
 
         }
     }
